@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Therian.exe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+     
+    <!-- Fondo oscuro -->
+    <div class="overlay"></div>
+
+    <!-- Ojos -->
+    <div class="eyes-container">
+        <div class="eye">
+            <div class="pupil"></div>
+        </div>
+        <div class="eye">
+            <div class="pupil"></div>
+        </div>
+    </div>
+
+    <!-- Burbuja principal -->
+    <div class="speech-bubble">
+        <h1>Bienvenido al programa oficial</h1>
+        <p>Yo me percibo como humano.</p>
+        <p>¿Quieres saber los pasos para ser un Therian?</p>
+
+        <div class="buttons">
+            <button id="yesBtn">SÍ QUIERO LOS PASOS</button>
+            <button id="noBtn">NO ESTOY LISTO</button>
+        </div>
+    </div>
+
+    <!-- Contenedor de pasos (oculto por ahora) -->
+    <div class="steps-container">
+        <div class="step-box">
+            <p id="stepText"></p>
+            <div class="confirmation" id="confirmation">
+                <input type="checkbox" id="confirmBox">
+                <label for="confirmBox">Hecho.</label>
+            </div>
+            <p id="continueText" class="continue-text"></p>
+
+
+        </div>
+    </div>
+
+<div class="countdown" id="countdown"></div>
+
+<audio id="breathingSound" src="breathingSound.mp3"></audio>
+<audio id="morseSound" src="morseSound.mp3"></audio>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
