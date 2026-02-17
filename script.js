@@ -1,10 +1,5 @@
-// --------------------
-// 👁 SEGUIR CURSOR
-// --------------------
 const continueText = document.getElementById("continueText");
-
 const pupils = document.querySelectorAll(".pupil");
-
 const breathingSound = document.getElementById("breathingSound");
 const morseSound = document.getElementById("morseSound");
 
@@ -12,7 +7,7 @@ const morseSound = document.getElementById("morseSound");
 breathingSound.volume = 1;
 morseSound.volume = 0.15;
 
-
+//seguir el cursor
 document.addEventListener("mousemove", (e) => {
 
     pupils.forEach(pupil => {
@@ -37,10 +32,8 @@ document.addEventListener("mousemove", (e) => {
 });
 
 
-// --------------------
-// ⌨ EFECTO MAQUINA DE ESCRIBIR
-// --------------------
 
+// efecto maquina de escribir
 const textElement = document.querySelector(".speech-bubble p");
 const originalText = textElement.innerText;
 
@@ -59,10 +52,7 @@ function typeWriter() {
 window.onload = typeWriter;
 
 
-// --------------------
-// BOTÓN "SÍ QUIERO LOS PASOS"
-// --------------------
-
+// boton si quiero los pasos
 const yesBtn = document.getElementById("yesBtn");
 const speechBubble = document.querySelector(".speech-bubble");
 const stepsContainer = document.querySelector(".steps-container");
@@ -94,9 +84,7 @@ yesBtn.addEventListener("click", () => {
 });
 
 
-// --------------------
-// PASO 1
-// --------------------
+// paso 1
 function startStep1() {
 
     const step1 = "Paso 1:Ir Al Catatumbo (La Gerrilla Ama A Los Therian 🤗) ...";
@@ -108,9 +96,7 @@ function startStep1() {
 }
 
 
-// --------------------
-// FUNCIÓN MÁQUINA DE ESCRIBIR PARA PASOS
-// --------------------
+// funcion maquina de escribir para pasos
 
 function typeWriterEffect(text, element) {
 
@@ -231,5 +217,5 @@ function startBreathingLoop() {
     setInterval(() => {
         breathingSound.currentTime = 0;
         breathingSound.play();
-    }, 3000); // cada 4 segundos (ajústalo si quieres)
+    }, 3000); // cada 4 segundos 
 }
