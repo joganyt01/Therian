@@ -1,10 +1,5 @@
-// --------------------
-// 👁 SEGUIR CURSOR
-// --------------------
 const continueText = document.getElementById("continueText");
-
 const pupils = document.querySelectorAll(".pupil");
-
 const breathingSound = document.getElementById("breathingSound");
 const morseSound = document.getElementById("morseSound");
 
@@ -12,8 +7,9 @@ const morseSound = document.getElementById("morseSound");
 breathingSound.volume = 1;
 morseSound.volume = 0.15;
 
+//seguir el cursor
 
-document.addEventListener("mousemove", (e) => {
+function moveEyes(x, y) {
 
     pupils.forEach(pupil => {
 
@@ -23,24 +19,38 @@ document.addEventListener("mousemove", (e) => {
         const eyeCenterY = rect.top + rect.height / 2;
 
         const angle = Math.atan2(
-            e.clientY - eyeCenterY,
-            e.clientX - eyeCenterX
+            y - eyeCenterY,
+            x - eyeCenterX
         );
 
-        const radius = 25;
+        const radius = 20; // un poco más natural que 25
 
-        const x = Math.cos(angle) * radius;
-        const y = Math.sin(angle) * radius;
+        const moveX = Math.cos(angle) * radius;
+        const moveY = Math.sin(angle) * radius;
 
-        pupil.style.transform = `translate(${x}px, ${y}px)`;
+        pupil.style.transform = `translate(${moveX}px, ${moveY}px)`;
+
     });
+}
+
+// 🖱 Desktop
+document.addEventListener("mousemove", (e) => {
+    moveEyes(e.clientX, e.clientY);
 });
 
+// 📱 Mobile
+document.addEventListener("touchmove", (e) => {
+    const touch = e.touches[0];
+    moveEyes(touch.clientX, touch.clientY);
+});
 
-// --------------------
-// ⌨ EFECTO MAQUINA DE ESCRIBIR
-// --------------------
+// También reaccionan al primer toque
+document.addEventListener("touchstart", (e) => {
+    const touch = e.touches[0];
+    moveEyes(touch.clientX, touch.clientY);
+});
 
+// efecto maquina de escribir
 const textElement = document.querySelector(".speech-bubble p");
 const originalText = textElement.innerText;
 
@@ -59,10 +69,7 @@ function typeWriter() {
 window.onload = typeWriter;
 
 
-// --------------------
-// BOTÓN "SÍ QUIERO LOS PASOS"
-// --------------------
-
+// boton si quiero los pasos
 const yesBtn = document.getElementById("yesBtn");
 const speechBubble = document.querySelector(".speech-bubble");
 const stepsContainer = document.querySelector(".steps-container");
@@ -94,9 +101,7 @@ yesBtn.addEventListener("click", () => {
 });
 
 
-// --------------------
-// PASO 1
-// --------------------
+// paso 1
 function startStep1() {
 
     const step1 = "Paso 1:Ir Al Catatumbo (La Gerrilla Ama A Los Therian 🤗) ...";
@@ -108,9 +113,7 @@ function startStep1() {
 }
 
 
-// --------------------
-// FUNCIÓN MÁQUINA DE ESCRIBIR PARA PASOS
-// --------------------
+// funcion maquina de escribir para pasos
 
 function typeWriterEffect(text, element) {
 
@@ -231,5 +234,5 @@ function startBreathingLoop() {
     setInterval(() => {
         breathingSound.currentTime = 0;
         breathingSound.play();
-    }, 3000); // cada 4 segundos (ajústalo si quieres)
+    }, 3000); // cada 4 segundos 
 }
