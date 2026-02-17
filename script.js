@@ -226,6 +226,11 @@ function startStep3() {
     stepText.innerText = "";
     typeWriterEffect(step3, stepText);
 
+      // Esperar a que termine de escribirse y luego finalizar
+    setTimeout(() => {
+        finishExperience();
+    }, step3.length * 40 + 800); 
+
 }
 
 function startBreathingLoop() {
@@ -237,4 +242,49 @@ function startBreathingLoop() {
         breathingSound.currentTime = 0;
         breathingSound.play();
     }, 3000); // cada 4 segundos 
+}
+
+function finishExperience() {
+
+    const confirmation = document.getElementById("confirmation");
+    const continueText = document.getElementById("continueText");
+    const stepText = document.getElementById("stepText");
+
+    // Ocultar elementos interactivos
+   if (confirmation) {
+    confirmation.style.opacity = "0";
+    confirmation.style.display = "none";
+}
+
+if (continueText) {
+    continueText.style.opacity = "0";
+    continueText.style.display = "none";
+}
+
+
+    setTimeout(() => {
+        confirmation.style.display = "none";
+        continueText.style.display = "none";
+    }, 500);
+
+    // Mensaje final
+    setTimeout(() => {
+
+        typeWriterEffect(
+            "y Recuerda Todos Quieren Alos Therian Sal Ala Calle Y Lo Veras☺️.",
+            stepText
+        );
+
+    }, 800);
+
+    // Bajar respiración gradualmente
+    let fadeAudio = setInterval(() => {
+        if (breathingSound.volume > 0.05) {
+            breathingSound.volume -= 0.02;
+        } else {
+            breathingSound.pause();
+            clearInterval(fadeAudio);
+        }
+    }, 200);
+
 }
