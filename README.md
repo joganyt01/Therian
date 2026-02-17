@@ -18,11 +18,16 @@ Es una experiencia.
 
 ## 📸 Capturas
 
-<p align="center">
-  <img src="desktop.PNG" width="600" />
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="mobil.jpeg" width="250" />
-</p>
+<table align="center">
+  <tr>
+    <th>💻 Desktop</th>
+    <th>📱 Móvil</th>
+  </tr>
+  <tr>
+    <td><img src="desktop.PNG" width="600"/></td>
+    <td><img src="mobil.jpeg" width="250"/></td>
+  </tr>
+</table>
 
 
 ---
@@ -91,4 +96,5 @@ Sonido activado para una experiencia completa.
 ## 👨‍💻 Autor
 
 Desarrollado con 🖤 por Johanyt
+
 
